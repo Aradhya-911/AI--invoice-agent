@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Invoices{% endblock %}
+{% block content %}
+<h1>Invoices</h1>
+<a href="/invoices/new" class="btn">+ New Invoice</a>
+<table>
+    <thead><tr><th>ID</th><th>Vendor</th><th>Number</th><th>Amount (₹)</th><th>Due Date</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+    {% for inv in invoices %}
+        <tr>
+            <td>{{ inv['id'] }}</td>
+            <td>{{ inv['vendor'] }}</td>
+            <td>{{ inv['number'] }}</td>
+            <td>{{ "{:,.2f}".format(inv['amount']) }}</td>
+            <td>{{ inv['due_date'] }}</td>
+            <td class="status-{{ inv['status'] }}">{{ inv['status'] }}</td>
+            <td><a href="/invoices/{{ inv['id'] }}" class="btn">View</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

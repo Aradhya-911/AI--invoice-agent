@@ -1,0 +1,10 @@
+flask>=3.0
+jinja2
+pypdf>=4.0
+reportlab
+pyyaml
+python-dotenv
+pytest
+rich
+playwright
+google-genai>=1.0

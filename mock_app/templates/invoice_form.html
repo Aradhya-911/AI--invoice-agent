@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}New Invoice{% endblock %}
+{% block content %}
+<h1>Enter Invoice</h1>
+{% if error %}
+<div class="error" id="form-error">{{ error }}</div>
+{% endif %}
+<form method="POST" action="/invoices/new" id="invoice-form">
+    <div class="form-group">
+        <label for="vendor">Vendor</label>
+        <select name="vendor" id="vendor">
+            <option value="">-- Select Vendor --</option>
+            {% for v in vendors %}
+            <option value="{{ v['name'] }}" {% if form.get('vendor') == v['name'] %}selected{% endif %}>{{ v['name'] }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="number">Invoice Number</label>
+        <input type="text" name="number" id="number" value="{{ form.get('number', '') }}">
+    </div>
+    <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" name="amount" id="amount" value="{{ form.get('amount', '') }}">
+    </div>
+    <div class="form-group">
+        <label for="due_date">Due Date</label>
+        <input type="date" name="due_date" id="due_date" value="{{ form.get('due_date', '') }}">
+    </div>
+    <button type="submit" class="btn btn-success" id="save-btn">Save</button>
+</form>
+{% endblock %}

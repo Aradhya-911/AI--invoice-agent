@@ -1,0 +1,13 @@
+rules:
+  - type: field_max
+    field: amount
+    max: 50000
+    message: "Amount exceeds threshold of ₹50,000. Approval required."
+  - type: must_exist
+    field: vendor
+    sql: "SELECT 1 FROM vendors WHERE name = :value"
+    message: "Vendor '{value}' not found in the system."
+  - type: must_not_exist
+    field: number
+    sql: "SELECT 1 FROM invoices WHERE number = :value"
+    message: "Invoice '{value}' already exists in the system (duplicate)."

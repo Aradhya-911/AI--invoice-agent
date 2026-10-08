@@ -1,0 +1,8 @@
+.env
+runs/
+company.db
+venv/
+__pycache__/
+*.pyc
+inbox/
+.pytest_cache/

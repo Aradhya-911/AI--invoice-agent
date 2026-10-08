@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}New Vendor{% endblock %}
+{% block content %}
+<h1>Add Vendor</h1>
+{% if error %}
+<div class="error" id="form-error">{{ error }}</div>
+{% endif %}
+<form method="POST" action="/vendors/new" id="vendor-form">
+    <div class="form-group">
+        <label for="name">Vendor Name</label>
+        <input type="text" name="name" id="name" value="{{ form.get('name', '') }}" required>
+    </div>
+    <button type="submit" class="btn btn-success" id="save-vendor-btn">Save Vendor</button>
+</form>
+{% endblock %}

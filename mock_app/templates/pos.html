@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Purchase Orders{% endblock %}
+{% block content %}
+<h1>Purchase Orders</h1>
+<table>
+    <thead><tr><th>ID</th><th>PO Number</th><th>Vendor</th><th>Amount (₹)</th></tr></thead>
+    <tbody>
+    {% for po in pos %}
+        <tr>
+            <td>{{ po['id'] }}</td>
+            <td>{{ po['po_number'] }}</td>
+            <td>{{ po['vendor'] }}</td>
+            <td>{{ "{:,.2f}".format(po['amount']) }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

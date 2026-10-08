@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Vendors{% endblock %}
+{% block content %}
+<h1>Vendors</h1>
+<a href="/vendors/new" class="btn" style="margin-bottom: 15px;">+ New Vendor</a>
+<table>
+    <thead><tr><th>ID</th><th>Name</th></tr></thead>
+    <tbody>
+    {% for v in vendors %}
+        <tr><td>{{ v['id'] }}</td><td>{{ v['name'] }}</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
