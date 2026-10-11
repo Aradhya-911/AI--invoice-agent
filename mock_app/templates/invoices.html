@@ -14,7 +14,7 @@
             <td>{{ "{:,.2f}".format(inv['amount']) }}</td>
             <td>{{ inv['due_date'] }}</td>
             <td class="status-{{ inv['status'] }}">{{ inv['status'] }}</td>
-            <td><a href="/invoices/{{ inv['id'] }}" class="btn">View</a></td>
+            <td><a href="/invoices/{{ inv['id'] }}" id="view-inv-{{ inv['id'] }}" class="btn">View</a></td>
         </tr>
     {% endfor %}
     </tbody>

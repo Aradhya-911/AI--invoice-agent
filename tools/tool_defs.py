@@ -210,11 +210,13 @@ def browser_read_page() -> str:
 
         # Links
         links = _browser_page.query_selector_all("a[href]")
-        for link in links[:20]:
+        for link in links[:25]:
             href = link.get_attribute("href") or ""
+            id_attr = link.get_attribute("id") or ""
             link_text = link.inner_text().strip()
             if link_text and href:
-                elements.append(f"LINK text='{link_text}' href='{href}'")
+                sel = f"#{id_attr}" if id_attr else f"a[href='{href}']"
+                elements.append(f"LINK text='{link_text}' href='{href}' id='{id_attr}' → selector: {sel}")
 
         result = f"=== Page Content ===\n{text}\n\n=== Interactive Elements ===\n"
         result += "\n".join(elements) if elements else "(no interactive elements found)"
