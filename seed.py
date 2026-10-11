@@ -215,7 +215,7 @@ def main() -> None:
     parser.add_argument("--scenario", required=True, choices=SCENARIOS.keys())
     args = parser.parse_args()
     SCENARIOS[args.scenario]()
-    print(f"\u2713 Seeded scenario: {args.scenario}")
+    print(f"[OK] Seeded scenario: {args.scenario}")
     print(f"  DB: {DB_PATH}")
     print(f"  Inbox: {INBOX}")
 
